@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>*{margin:0;padding:0}
+	body{overflow:hidden}
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="dis_1" cor="red"><h1>1번 스크린 화면</h1></div>
+	<div id="dis_2" cor="yellow"><h1>2번 스크린 화면</h1></div>
+	<div id="dis_3" cor="black"><h1>3번 스크린 화면</h1></div>
+</div>
+</body>
+<script>
+	let gap = window.innerWidth/3; // 1/3 이동시 화면 변경
+	let curDiv=0;
+	let clicksw=false;
+	let allDiv = document.querySelectorAll("[id^=dis_]");
+	let contain = document.querySelector("#container");
+	contain.style.width=
+		(window.innerWidth*allDiv.length)+"px";
+	contain.style.height=window.innerHeight+"px";
+	contain.style.position="absolute";
+	contain.style.left="0px";
+	contain.addEventListener("mousedown",function(e){
+		if(!e.button){clicksw=true;prevX=e.pageX}
+	});
+	contain.addEventListener("mouseup",function(e){
+		if(!e.button){clicksw=false;}
+		if(Math.abs(e.pageX-prevX)<gap){//원상복귀 코드???????수정
+			curViewControl(0);
+		}
+	});
+	let prevX;
+	function curViewControl(val){
+		curDiv+=val;
+		contain.style.left=(curDiv*window.innerWidth)*-1+"px";
+	}
+	contain.addEventListener("mousemove",function(e){
+		if(clicksw){//마우스 드래그 할때만 진입로직
+			//e.pageX-prevX : 양수이면 우측이동
+			//e.pageX-prevX : 음수이면 좌측이동
+			//console.log(e.pageX-prevX);//우측이동은 양수 좌측이동은 음수
+			//console.log(this.style.left)
+			if(parseInt(this.style.left)>=0){
+				if(e.pageX-prevX>0){//마우스이동방향
+					this.style.left="0px";
+					return;
+				}
+			}
+			if(parseInt(this.style.left)<=window.innerWidth*(allDiv.length-1)*-1){
+				if(e.pageX-prevX<0){//마우스이동방향
+					console.log(window.innerWidth)
+					console.log("결과위치:"+window.innerWidth*(allDiv.length-1));
+					this.style.left=window.innerWidth*(allDiv.length-1)*-1+"px";
+					return;
+				}
+			}
+			this.style.left=
+				parseInt(this.style.left)+(e.pageX-prevX)+"px";
+			prevX=e.pageX;
+			if(Math.abs(e.pageX-prevX)>gap){//1/3 이상 이동
+				//화면 변경
+				if(e.pageX-prevX>0){
+					//curDiv-1; 왼쪽 화면 불러오기
+					curViewControl(-1);					
+				}else{
+					//curDiv+1; 오른쪽 화면 불러오기
+					curViewControl(1)					
+				}
+			}
+		}
+	});
+	//window.innerWidth,window.innerHeight
+	let sizeControl = function(){
+		allDiv.forEach(function(it,ix){
+			it.style.width=window.innerWidth+"px";
+			it.style.height=window.innerHeight+"px";		
+			it.style.backgroundColor=it.getAttribute("cor");
+			it.style.position="absolute";
+			it.style.left=window.innerWidth*ix+"px";
+			it.style.top="0px";
+			it.myposition=ix;
+			console.log(it.myposition);
+			
+		});
+	}
+	sizeControl();
+	window.addEventListener("resize",function(){
+		sizeControl();
+	});
+	
+</script>
+</html>
+
+
