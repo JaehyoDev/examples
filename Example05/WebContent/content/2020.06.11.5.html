@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+	//쥬스를 만드는 기계
+	var userInput = prompt("쥬스에 뭐 넣고 싶으세요? \n 과일종류, 물종류, 첨가물종류");
+	var grediArr = userInput.split(",");
+	var cup = machineJuice(grediArr[0],grediArr[1],grediArr[2]);
+	if (grediArr[0]=="바나나") {
+		document.write(cup + "오하우!! 밧나네");
+	} else {
+		document.write(cup + "오하우!! 맛나네");
+	}
+	
+	function machineJuice(과일종류, 물종류, 첨가물종류) {
+		//필요데이터 : 과일, 물, 첨가물 - 함수 외부에서 호출자가 주입 시키는 변수
+		document.write(과일종류 + "와 " + 물종류 + "와 " + 첨가물종류 + "를 섞습니다. <br>") ;
+		document.write(과일종류 + "를 꾹 눌러 착즙합니다. <br>");
+		var result = 과일종류 + "쥬스가 만들어 졌습니다. 맛있게 드세요!!! <br>";
+		return result;
+	}
+//함수 생성 시 고려해야할 상항
+	//1. 어떤 기능을 만들건지?
+	//2. 기능을 수행하기 위한 재료는 무엇인지? (파라미터)
+	//3. 기능을 수행한 결과로 무엇을 반환할 것인지? (반환값)
+//메소드 생성시 고려해야할 사항
+	//1. 어떤 기능을 만들건지?
+	//2. 기능을 수행하기 위한 재료는 무엇인지? (파라미터)
+	//3. 기능을 수행한 결과로 무엇을 반환할 것인지? (반환값)
+	//4. 객체의 어떤 속성(특성)을 사용할건지?
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function outer() {
+		var cnt = 0;
+		var pid = setInterval(function() {
+			cnt++;
+			document.write(cnt);
+			if (cnt>=3) {
+				clearInterval(pid); //clearInterval 또는 clearTimeout
+			}
+		}, 1000);
+		
+	}
+	outer();
+	//동적함수 : 문자열 변경을 통해 함수 내용을 바꾸기 가능
+	var add = new Function("a","b","return a+b");
+	//정적함수
+	function add(a,b) {
+		return a+b;
+	}
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

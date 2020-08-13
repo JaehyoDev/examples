@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+	<h1>컴퓨터와 가위바위보</h1>
+	<br>
+	<label>가위 바위 보 셋 중 하나를 입력</label>
+	<input id="myValue" type="text" placeholder="가위, 바위, 보를 입력하세요.">
+	<input id="checkBtn" type="button" value="게임 시작">
+	<br>
+	<div id="result"></div>
+</body>
+
+<script>
+	var selectArr = ["가위","바위","보"];
+	var resultArr = [ [ "DRAW", "LOSE", "WIN" ], [ "WIN", "DRAW", "LOSE" ],
+			[ "LOSE", "WIN", "DRAW" ] ];
+	var myValue = "";
+	var myInt = -1;
+	var comInt = 0;
+	var i = 0;
+	
+	//클릭이벤트
+	checkBtn.onclick = function() {
+		//나의 가위바위보
+		myValue = document.getElementById("myValue");
+		myInt = selectArr.indexOf(myValue.value);
+		console.log(myInt);
+		if (myInt>=0) {
+			console.log("게임 시작 클릭됨")
+			start();
+		}
+	}
+
+	//가위 바위 보 출력
+	function start() {
+		var pid = setInterval(function(){
+			if (i==0) {
+				result.innerHTML = "<p>가위</p>" + result.innerHTML;
+			} else if (i == 1) {
+				result.innerHTML = "<p>바위</p>" + result.innerHTML;
+			} else if (i == 2) {
+				result.innerHTML = "<p>보</p>" + result.innerHTML;
+				clearInterval(pid);
+				return checkGame();
+			}
+			i++;
+		},500)
+	}
+	
+	//가위 바위 보 승부
+	function checkGame() {
+		i = 0;
+		//컴퓨터의 가위바위보
+		comInt = Math.floor(Math.random()*3);
+		comValue = selectArr[comInt];
+		result.innerHTML = "<p>사용자: " + myValue.value
+									+ " / 컴퓨터: " +comValue
+									+ " You " + resultArr[myInt][comInt] + "</p>"
+									+ result.innerHTML;
+		myInt = -1;
+	}
+	
+</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>웹 히스토리 기능 구현</h1>
+	<br>
+	<label>웹 주소를 입력하세요.<input id="webAddr" type="text" placeholder="입력하세요"></label>
+	<br>
+	<input id="back" type="button" value="뒤로">
+	<input id="move" type="button" value="이동">
+	<input id="go" type="button" value="앞으로">
+	<div id="result"></div>
+</body>
+<script>
+
+	var webAddr = document.getElementById("webAddr");
+	var backBtn = document.getElementById("back");
+	var moveBtn = document.getElementById("move");
+	var goBtn = document.getElementById("go");
+	var prePageStack = [];
+	var curPage = "";
+	var nexPageStack = [];
+	var result = document.getElementById("result");
+	
+	moveBtn.onclick = function () {
+		if (webAddr.value) {
+			if(curPage!="") { // 처음은 빈값이므로 밑에만 실행, 하지만 다음부터는 안에도 실행
+				prePageStack.push(curPage);
+			}
+			curPage = webAddr.value;
+			result.innerHTML = "<p>" + curPage + " 주소로 이동합니다." + "</p>" 
+								+ result.innerHTML;
+			console.log("prePageStack: " + prePageStack);
+			console.log("curPage: " + curPage);
+			console.log("nexPageStack: " + nexPageStack);				
+		}
+	}
+	
+	backBtn.onclick = function () {
+		if (prePageStack.length<=0) {
+			return;
+		}
+		nexPageStack.unshift(curPage);
+		curPage = prePageStack.pop();
+		result.innerHTML = "<p>" + curPage + " 주소로 이동합니다." + "</p>" 
+							+ result.innerHTML;
+		console.log("prePageStack: " + prePageStack);
+		console.log("curPage: " + curPage);
+		console.log("nexPageStack: " + nexPageStack);
+	}
+
+	goBtn.onclick = function () {
+		if (nexPageStack.length<=0) {
+			return;
+		}
+		prePageStack.push(curPage);
+		curPage = nexPageStack.shift();
+		result.innerHTML = "<p>" + curPage + " 주소로 이동합니다." + "</p>" 
+							+ result.innerHTML;
+		console.log("prePageStack: " + prePageStack);
+		console.log("curPage: " + curPage);
+		console.log("nexPageStack: " + nexPageStack);
+	}
+	
+</script>
+</html>

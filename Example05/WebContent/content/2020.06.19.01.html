@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+//★array.forEach() BREAK CONTINUE 없이 무조건 돈다.
+	var testArr1=[10,30,50,70,90];
+	var tmpArr1=[];
+	testArr1.forEach(function(item,index,arr){
+		tmpArr1.push(item+this);
+	},50)
+	console.log(tmpArr1);
+//array.from(object[,mapfunction][,thisvalue]) 문자열 하나하나 문자를 배열로 가능
+	var testObj1 = new String("Ssfdfsfsdf");
+	console.log(Array.from(testObj1));
+//★array.includes(element[,start]) 배열이 해당 요소를 포함하는지. 어디서부터 찾을지
+	var testArr2=["코끼리","멍키","몽키"];
+	console.log(testArr2.includes("멍키",1));
+//★array.indexOf(item[,start]) 해당 값 위치의 인덱스 출력         배열 값 -> 인덱스
+	var testArr3=["코끼리","멍키","상어"];
+	console.log(testArr3.indexOf("상어"));
+//그냥 인덱스로 접근,해당 인덱스의 값을 출력                    인덱스 -> 배열 값
+		var testArr4=["코끼리","멍키","상어"];
+		console.log(testArr4[1]);
+//Array.isArray(값)
+//join(seperator) 지정된 구분자로 배열의 요소를 문자열로 조인한다
+	var testArr4=["mango","banana","orange"];
+	console.log(testArr4.join());
+	console.log(testArr4.join("and"));
+	var tmpStr4 = testArr4.join("and");
+	console.log(tmpStr4);
+//★split(seperator) 지정된 구분자로 문자열의 요소를 배열로 만든다.
+	console.log(tmpStr4.split("and"));
+//lastIndexOf(searchValue[,start])
+	testArr4.push("mango");
+	console.log(testArr4.lastIndexOf("mango")); //일치하는 것 중 가장 뒤의 번호
+	console.log(testArr4.indexOf("mango")); //일치하는 것 중 가장 처음것 
+//★map(function(curVal,index,arr){},thisVal) 새로운 배열로 맵핑한다.
+	var testArr5=["홍길동","김사랑","김무개","홍민지","홍지민"];
+	function testFun5(aa){
+		if(aa.indexOf("홍")>-1){
+			return aa+"씨"
+		}else{
+			return aa+"님"	
+		} 
+	}
+	console.log(testArr5.map(testFun5));
+//★pop() 배열 스택에서 맨 뒤의 데이터를 추추춫추추추추추ㅜ추추추출 하나씩 꺼내서 원본이 변경됨               오른쪽에서부터 꺼냅니다
+	var testArr6 = ["영국", "미국", "캐나다", "호주","뉴질랜드"];
+	console.log(testArr6.pop());
+	console.log(testArr6.pop());
+	console.log(testArr6);
+//array.push(item1[,item2,...itemX]) 배열에 요소를 추가                            오른쪽에서부터 순서대로 넣어줍니다.
+	testArr6.push("apple","waterMelon");
+	console.log(testArr6);
+//array.reduce(function(total,currentValue,surrentIndex,))
+//total = initialValue 또는 이전 계산 결과 값
+	var testArr7 = [10,20,30,40,50];
+	var res7 = testArr7.reduce(function(total,curVal){
+		console.log("토탈값:"+total);
+		console.log("현재값:"+curVal);
+		return (total-curVal)
+	})
+	console.log(res7);
+	var res8 = testArr7.reduce(function(total,curVal){
+		return total+curVal
+	})
+	console.log(res8);
+//초기값 1을 줬더니 total 초기값이 1이지
+	var res9 = testArr7.reduce(function(total, curVal){
+		return total+curVal
+	},1);
+	console.log(res9);
+//reduceRight() 오른쪽부터 계산
+//reverse
+	var testArr10=[10,20,30,40,50];
+	testArr10.reverse();
+	console.log(testArr10);
+//shift() 배열의 가장 왼쪽값을 추출함니다.
+	var testArr11=[10,20,30,40,50];
+	console.log(testArr11.shift()); //가장 왼쪽값 추출하여 배열의 원본이 바뀐다                             왼쪽에서 데이터 꺼내기
+	console.log(testArr11); //배열의 가장 왼쪽값이 없어짐 ㅠㅠ
+//array.unshift(item1,item2...itemX) 배열의 가장 왼쪽에 값을 넣어줍니다.                     왼쪽에서 데이터 넣기
+	testArr11.unshift("나는 새로운 데이터");
+	console.log(testArr11);
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>

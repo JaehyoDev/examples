@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+	console.log(8+5); //산술연산
+	console.log("8"+"5"); //문자열연결연산(concat)
+	console.log("8"-"5"); //묵시적 타입변환 후 산술연산
+	console.log(Number("8")+Number("5")); //명시적 타입변환 후 산술연산
+	//자바스크립트 기본 객체들 1. Array, Boolean, Date, Math, Number, String
+	var num8 = new Number(8); //new -> 새로운 메모리 할당, 생략 가능, 간접 주소방식 실제 메모리에 만들고 주소값을 자스에 줌
+	var num9 = 9; //num9는 객체가 아님, 직접 주소방식
+	var num7 = num8; //숫자 8이 아니라 객체를 가르키는 참조 주소가 들어감. 둘다 동일한 객체를 가르키는 주소를 가지고 있음
+	var n1 = Number("8"); //문자 8을 숫자 8로 변경
+	var s1 = String(8); //숫자 8을 문자 8로 변경
+	var s2 = 8+""; //문자 8로 변경
+	
+</script>
+</body>
+</html>

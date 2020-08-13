@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+
+
+
+</head>
+<body>
+
+<script>
+var userInput=prompt("몇단 가능? ex) 3-5");
+var chk1=userInput.indexOf(",");
+var chk2=userInput.indexOf("-");
+var userArr=[];
+
+if(chk1>=0){
+	userArr=userInput.split(","); 
+}else if (chk2>=0) {
+	userArr=userInput.split("-"); 
+}else{
+	userArr[0]=userInput; userArr[1]=userInput;
+}
+
+var inHtml="";
+var body = document.getElementsByTagName('body')[0];
+var x = userArr.length-1;
+
+if(chk1>=0){
+	for(i=0; i<=x; i++){ 
+		var subHtml="";
+		for(j=1; j<=9; j++){
+			subHtml += userArr[i] + " * " + j + "=" + (userArr[i]*j + "<br>");
+			console.log(subHtml);
+	 	}
+		inHtml += "<div style= 'float: left; text-align: left; border: 1px solid black;'>" + subHtml + "</div>";
+	}
+}
+
+if(chk2>=0 || ((chk1<=-1) && (chk2<=-1))){
+	for(i=userArr[0]; i<=userArr[1]; i++){ 
+		var subHtml="";
+		for(j=1; j<=9; j++){
+			subHtml += i + " * " + j + "=" + i*j + "<br>";
+
+	 	}
+		inHtml += "<div style= 'float: left; text-align: left; border: 1px solid black;'>" + subHtml + "</div>";
+	}
+}
+	
+body.innerHTML = inHtml;
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+
+</head>
+<body>
+<script>
+	//재귀함수 (recrusive function)
+	var k = 1;
+
+	function aaa() {
+		document.write(k + "번 함수가 실행됩니다");
+		k++;
+		if (k!=10) {
+			aaa();
+		}
+	}
+	aaa();
+	setInterval(function(){
+		document.write(new Date().toUTCString() + "<br>");
+	}, 1000);
+	/*
+	setTimeout(function(){
+		document.write(new Date().toLocaleString());
+	}, 1000);
+	*/
+</script>
+</body>
+</html>

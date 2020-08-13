@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+//10초 뒤 미사일 발사, 몇초 뒤 행성에 도착하는 함수 만들기
+	var planetName=prompt("어느 행성에 가고 싶어요?");
+	var time;
+	
+	
+	if (planetName=="지구") {
+		earth();
+	} else {
+		mars();
+	}
+	
+	function earth () {
+		time=2;
+		return time;
+	}
+	function mars () {
+		time=6;
+		return time;
+	}
+	
+	
+	tripSpace(planetName, time, function(rs) {
+		document.write(result);
+	});
+	
+	
+	function tripSpace (planetName, time, cb) {
+		var rocketTime=10;
+		var pid1 = setInterval(function() {
+			if (rocketTime<0) {
+				clearInterval(pid1);
+				document.write("발사!!!!! <br>");
+				var pid2 = setInterval(function() {
+					if (time<1) {
+						clearInterval(pid2);
+						result = planetName+" 도착 완료"
+						cb(result);
+					} else {
+						document.write(planetName+"(으)로 이동 중 "+time+"초 후 도착 예정 <br>");	
+						time--;
+					}
+				},500)
+			} else { 
+				document.write(rocketTime+"<br>");
+				rocketTime--;
+			}
+		},500)
+	}
+</script>
+
+</head>
+<body>
+</body>
+</html>

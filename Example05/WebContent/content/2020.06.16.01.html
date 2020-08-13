@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//우측에 진법들가면 왼쪽 숫자가 그 진법으로 취급되서 10진수로 변환됨
+	document.write(parseInt("10")+"<br>");
+	document.write(parseInt("010")+"<br>");
+	document.write(parseInt("010",2)+"<br>");
+	document.write(parseInt("10",8)+"<br>");
+	document.write(parseInt("15",16)+"<br>");
+	document.write(parseInt("0x15")+"<br>");
+	document.write(isNaN("왓")+"<br>");
+	console.log(parseInt("kor27"));
+	console.log(3/0);
+	console.log(isFinite(300));
+	console.log(decodeURI("%EC%86%8C%EB%85%80%EC%8B%9C%EB%8C%80"));
+	console.log(encodeURI("소녀시대"));
+	//decodeURIComponent() , / ? : @ & = + $ # 포함해서 변환
+	//encodeURIComponent() , / ? : @ & = + $ # 포함해서 변환
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

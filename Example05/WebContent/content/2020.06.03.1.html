@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+	//1. 배열- 복수의 메모리 공간 묶음으로 단일 이름을 갖으며 인덱스 번호로 접근한다.
+	//처음에 길이를 정해줄 필요가 없네. 값넣으면 그 인덱스까지 배열 자동 생성...
+	var arr=[];
+	var arr1 = new Array();
+	var arr2 = Array();
+	arr[1]=5;
+	console.log(arr[1]);
+	arr[2]=10;
+	console.log(arr[2]);
+	arr[5]=50;
+	console.log(arr[5]);
+	arr[11]=function () {console.log("나는 함수")};
+	console.log(arr[10]);
+	arr[11]();
+	var arrTest=arr;//주소가 같아지기 때문이지 간접주소지정방식?
+	arrTest[1]=1000; 
+	console.log(arr[1]);
+	//변수는? 직접주소지정방식?
+	var v1=100;
+	var v2=v1;
+	v2=1000;
+	console.log(v1);
+</script>
+</head>
+<body>
+</body>
+</html>

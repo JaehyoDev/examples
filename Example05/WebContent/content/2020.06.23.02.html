@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script>
+	var testArr1 = ["사과", "망고", "오렌지", "바나나", "파인애플"];
+	//slice(startIndex, endIndex); 시작 끝 지점 잡아서 잘라서 배열 반환, 음수는 오른쪽에서 시작
+	var resArr1 = testArr1.slice(2,4);
+	console.log(resArr1);
+	console.log(testArr1.slice(-4)); //망고부터 우측으로
+	
+	//every 배열의 모든 요소가 테스트를 통과하면 트루 (and)
+	//some 배열의 일부 요소가 테스트를 통과하면 트루 (or)
+	var testArr2 = [10,20,30,40,50];
+	var resArr2_1 = testArr2.every(function(value){return value>30});
+		console.log(resArr2_1);
+	var resArr2_2 = testArr2.some(function(value){return value>30});
+		console.log(resArr2_2);
+	//sort([function(a,b){}]); 자동으로 알파벳 오름차순
+	var testArr3_1 = ['c','a','b','e','d'];
+	var testArr3_2 = ['40','30','20','50','10'];
+	testArr3_1.sort();
+	testArr3_2.sort();
+	console.log(testArr3_1);
+	testArr3_1.reverse();
+	console.log(testArr3_1);
+	console.log(testArr3_2);
+	testArr3_2.reverse();
+	console.log(testArr3_2);
+	
+	var testArr4 = [50,100,20,70,120,30];
+	testArr4.sort();
+	console.log(testArr4);
+	testArr4.sort(function(a,b){return a-b});
+	console.log(testArr4);
+	testArr4.sort(function(a,b){return b-a});
+	console.log(testArr4);
+	var testArr5 = ['홍삼_홍길동','강정_홍강정','마루_바닥재','당_그만먹어'];
+	/* testArr5.sort(); */
+	console.log(testArr5);
+	testArr5.sort(function(a,b){return a-b}); //안 먹힘
+	testArr5.sort(function(a,b){return a.charCodeAt()-b.charCodeAt()}); //먹힘
+	console.log(testArr5);
+	testArr5.sort(function(a,b){ 
+		var ea = a.charAt(a.indexOf("_")+1);
+		var eb = b.charAt(b.indexOf("_")+1);
+		return ea.charCodeAt()-eb.charCodeAt();
+	}); //먹힘
+	console.log(testArr5);
+	console.log('a'.charCodeAt());
+	console.log('강'.charCodeAt());
+	//정렬기능 만들자 ㅎㅎ
+	var testArr6 = [50,60,80,20,30];
+	function userSort(tArr){
+		for (var i=0; i<tArr.length-1; i++) {
+			for (var j=i+1; j<tArr.length; j++) {
+				if (tArr[i] > tArr[j]) {
+					var tmp;
+					tmp = tArr[i];
+					tArr[i] = tArr[j];
+					tArr[j] = tmp;
+				}
+			}
+		}
+		return tArr;
+	}
+	userSort(testArr6);
+	console.log(testArr6);
+</script>
+
+<body>
+</body>
+
+</html>

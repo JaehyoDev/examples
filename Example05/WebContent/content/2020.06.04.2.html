@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+</body>
+<script>
+
+
+//구구단
+var userInput=prompt("출력할 구구단의 단을 입력하세요 (예제 : 3-5)","2-9");
+var chk=userInput.indexOf('-');
+var userArr=[];
+if(chk<=-1){//-기호가 없을 떄
+	userArr[0]=userInput; userArr[1]=userInput;
+}else{//-기호가 있을 때	
+	userArr=userInput.split("-");
+}
+var body = document.getElementsByTagName('body')[0];
+var inHtml="";
+	for(var i=parseInt(userArr[0]); i<=parseInt(userArr[1]); i++){
+		var subHtml="";
+		for(var j=1; j<=9; j++){
+			subHtml += i + "*" + j + "=" + (i*j) + "<br>";  
+		}
+		inHtml += "<div style = 'text-align: left; float: left; border: 1px solid black'>" + subHtml + "</div>";
+	}
+	body.innerHTML=inHtml;
+
+/*
+	for(var i=2; i<=9; i++){
+		body.innerHTML += "<div style = 'float: left; border: 1px solid black'></div>"
+	}
+*/
+/*
+var userInput=prompt("구구단 입력 ex) 3-5");
+var chk=userInput.indexOf('-');
+var userArr=[];
+if(chk<=-1){
+	userArr[0]=userInput; userArr[1]=userInput;
+}else{
+	userArr=userInput.split("-");
+}
+	
+var body = document.getElementsByTagName('body')[0];
+var inHtml="";
+	for(var i=userArr[0]; i<=userArr[1]; i++){
+		var subHtml="";
+		for(var j=1; j<=9; j++){
+			subHtml += i + " * " + j + " = " + (i*j) + "<br>";
+		}
+		inHtml += "<div style = 'float: left; text-align: left; border: 1px solid black;'>" + subHtml + "</div>";
+	}
+	body.innerHTML=inHtml;
+	*/
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+</body>
+
+<script>
+var userInput=prompt("몇단 가능? ex) 3-5");
+var chk=userInput.indexOf("-");
+var userArr=[];
+if(chk<=-1){
+	userArr[0]=userInput; userArr[1]=userInput;
+}else{
+	userArr=userInput.split("-");
+}
+var inHtml="";
+var body=document.getElementsByTagName('body')[0];
+for(i=userArr[0]; i<=userArr[1]; i++){
+	var subHtml="";
+	for(j=1; j<=9; j++){
+		subHtml = i + " * " + j + "=" + (i*j + "<br>");
+ 	}
+	inHmtl = "<div style= float: left; text-align: left; border: 1px solidbox;>" + subHtml + "</div>";
+}
+body.innerHTML = inHtml;
+</script>
+
+</html>

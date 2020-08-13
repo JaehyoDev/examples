@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	
+	//구구단 단수 입력
+	var userInput = 
+		prompt("구구단에 입력할 단수를 입력하시오");
+	function MultiTable() {
+		for (var i=1; i<=9; i++) {
+			document.getElementById("main1").innerHTML += userInput + "X" + i + "= " + (userInput*i) + "<br>";
+		}
+	}
+	
+	//구구단 9단까지 다 나와
+	function MT9() {
+		for (var i=1; i<=9; i++) {
+			for (var j=2; j<=9; j++) {
+				document.getElementById("main2").innerHTML += j + " X " + i + "= " + (j*i) + "\t";
+			}
+			document.getElementById("main2").innerHTML += "<br><hr size='1' color='red'>"		
+		}		
+	}
+
+	
+	//1부터 100까지 더하기
+	function sum100() {
+		var sum=0;
+		for (var i=1; i<=100; i++) {
+			sum = sum + i;
+		}
+		document.getElementById("main3").innerHTML += sum + "<br>";
+	}
+	
+</script>
+
+</head>
+
+<body>
+
+	<div id="main1"><input type="button" value="구구단 시작" onClick="MultiTable();"/>
+	<br></div>
+	<div id="main2"><input type="button" value="구구단 9단" onClick="MT9();"/>
+	<br></div>
+	<div id="main3"><input type="button" value="1부터 100까지 더하기" onClick="sum100();"/>
+	<br></div>
+	
+</body>
+</html>

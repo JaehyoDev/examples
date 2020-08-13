@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var score = prompt("성적을 입력");
+	if(!Number(score)) {
+		alert("숫자 좀 입력해라")
+	} else {
+		if(score>=90) {
+			if(score>=95) {
+				alert("A+");
+			} else {
+				alert("A학점");
+			}
+		} else if (score>=80) {
+			if (score>=85) { 
+					alert("B+")
+				} else {
+					alert("B학점");
+				}
+		} else if (score>=70) {
+				alert("C학점");
+		} else if (score>=60) {
+				alert("D학점");
+		} else {
+				alert("F학점");
+		}
+	}
+	
+	//1부터 100까지 더하기
+	var sum=0 ;
+	for (var i=1; i<=100; i++) {
+		sum = sum + i;
+	}
+	console.log(sum);
+
+</script>
+</head>
+<body>
+</body>
+</html>

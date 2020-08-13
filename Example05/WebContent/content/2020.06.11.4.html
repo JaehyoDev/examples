@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+	var userInput1 = prompt("첫번째 숫자를 입력하라고");
+	var userInput2 = prompt("두번째 숫자를 입력하라고");
+	var res = confirm("더할래(확인), 곱할래(취소)"); //왼쪽 누르면 true 오른쪽 누르면 false????
+	/*
+	if (res==true) {
+		alert(add(parseInt(userInput1), parseInt(userInput2)))
+	} else {
+		alert(multi(userInput1,userInput2))
+	}
+	function add(a,b) {
+		return a+b;
+	}	
+	function multi(a,b) {
+		return a*b;
+	}
+	*/
+	var fbody;
+	if (res==true) {
+		fbody="return parseInt(a)+parseInt(b)";
+	} else {
+		fbody="return a*b";
+	}
+	var myfun = new Function("a","b",fbody);
+	alert(myfun(userInput1,userInput2));
+	
+</script>
+
+</head>
+<body>
+</body>
+</html>

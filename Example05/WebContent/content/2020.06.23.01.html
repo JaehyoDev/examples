@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>프린트 스풀링 구현 재귀 함수</h1>
+	<label>파일명 : <input id="fName" type="text"
+		placeholder="프린트할 파일명을 입력">
+	</label>
+	<input id="runBtn" type="button" value="프린트">
+	<div id="result"></div>
+</body>
+<script>
+ //프린튜 큐잉 구현 장당 인쇄 시간은 5초
+ 	var fName = document.getElementById("fName");
+ 	var runBtn = document.getElementById("runBtn");
+ 	var result = document.getElementById("result");
+ 	var sw = false; //인쇄 중 아님
+ 	var queueMem = [];
+ 	runBtn.onclick=function(){
+ 		queueMem.push(fName.value);
+ 		if (sw==false) {queAccess()}}
+ 	//큐에 접근해서 인쇄를 호출하는 재귀함수
+ 	//1. 재귀함수 실행
+ 	//2. 재귀함수 안에서 리얼함수(콜백함수식 포함) 실행
+ 	//3. 리얼함수 실행
+ 	//4. 리얼함수 안에서 (인자값은 콜백) 마지막에서 콜백함수 리턴
+ 	//5. 재귀함수 안의 리얼함수 안의 콜백함수 실행
+ 	재귀함수안의 리얼함수안의 콜백함수 실행 -> 콜백함수안의 재귀함수 실행
+ 	function queAccess(){
+ 		sw = true; //인쇄 중
+ 		printExec(function(){
+ 			if (queueMem.length>0) {
+ 				queAccess();
+ 			} else {
+ 				sw = false;
+ 			}
+ 		});
+ 	}
+ 	//프린트를 5초간 실행하는 함수
+ 	function printExec(cb){
+ 		var file = queueMem.shift();
+ 		result.innerHTML = "<p>" + file + " 프린트를 시작합니다.</p>" + result.innerHTML;
+ 		setTimeout(function(){
+			result.innerHTML = "<p>" + Date().toLocaleString()
+								+ " 파일명: " + file + " 인쇄 완료</p>" + result.innerHTML;
+			return cb();
+ 		},5000);
+ 	} 
+</script>
+</html>

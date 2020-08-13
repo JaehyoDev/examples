@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+//이거는 별 그리기 1
+	var k=1;
+	for (var i=1; i<=9; i++) {
+		for(var j=1; j<=k; j++) {
+			document.write("★");
+		}
+		document.write("<br>");
+		if (i>=5) {
+			k--;
+		} else {
+			k++;
+		}
+	}
+	
+	document.write("<hr>");
+
+//이거는 다이아 별 그리기 내가 해본 거
+	var i=3;
+	for (var s=1; s<=7; s++) {
+		for (var a=1; a<=i; a++) {
+		document.write("☆");
+		}
+		for (var b=1; b<=((3.5-i)/0.5); b++) {
+		document.write("★");
+		}
+		if (s>=4) {
+			i++;
+		} else {
+			i--;
+		}
+		document.write("<br>");
+	}
+</script>
+</body>
+</html>

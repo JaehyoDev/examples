@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+	
+	var arr1=[10,20,30,40,50,60,70,80]; //선언과 초기화 동시에
+	console.log(arr1.length);
+	for (i=0; i<=arr1.length-1; i++) {
+		document.write(arr1[i] + "<br>");
+	}
+	
+	var j=0;
+	while (j<=arr1.length-1) {
+		document.write(arr1[j] + "<br>");
+		j++;
+	}
+	
+	var k=0;
+	while (true) {
+		if (k=arr1.length) break;
+		document.write(arr1[k] + "<br>");
+		k++;
+	}
+	
+	//2차원 배열 구조 상위배열은 배열을 담고 하위배열은 값을 담는다
+	var arr_two=[10,20,30,40,50];
+	var arr_three=[200,300,400];
+	var arr_four=[100,200];
+	var arr_one=[arr_two,arr_three,arr_four];
+	//arr[][] : 2차원 배열. 그런데 약간 하위 배열 같다...
+	for (var i=0; i<arr_one.length; i++){
+		for (var j=0; j<arr_one[i].length; j++) {
+			document.write(arr_one[i][j] + "<br>");			
+		}
+	}
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

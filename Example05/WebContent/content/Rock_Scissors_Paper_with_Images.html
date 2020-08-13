@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+	*{box-sizing: border-box;}
+	fieldset{float: left; margin-right: 2em;}
+	button img, #select_com img, .res_my, .res_com{width: 50px; height: 50px; border: 1px solid black;}
+	fieldset div{margin: 0 auto; width: 50px; height: 50px; border: 1px solid black;}
+	.res_com{transform: scaleX(-1);}
+</style>
+<body>
+	<h1>컴퓨터와 가위바위보</h1>
+	<br>
+	<fieldset>
+	<legend>사용자</legend>
+	<button id="scissors" onclick="select_user(this.id)">
+		<img src="../img/가위.png"/>
+	</button>
+	<button id="rock" onclick="select_user(this.id)">
+		<img src="../img/바위.png"/>
+	</button>
+	<button id="paper" onclick="select_user(this.id)">
+		<img src="../img/보.png"/>
+	</button>
+	</fieldset>
+	
+	<fieldset>
+		<legend>컴퓨터 선택</legend>
+		<div id="select_com"></div>
+	</fieldset>
+	
+	<hr style="clear: both">
+	<h2>결과:</h2>
+	<div id="result"></div>
+</body>
+
+<script>
+
+	var selectArr = ["가위","바위","보"];
+	var resultArr = [ [ "DRAW", "LOSE", "WIN" ], [ "WIN", "DRAW", "LOSE" ],
+			[ "LOSE", "WIN", "DRAW" ] ];
+	var myInt = 0;
+	var comInt = 0;
+	//가위바위보 시작하는 동안 게임을 다시 할 수 없음
+	var sw = true;
+	//select_com은 컴퓨터가 선택한 가위바위보 이미지 부분
+	var select_com = document.getElementById("select_com");
+	//myResult와 comResult는 결과에서 이미지를 출력
+	var myResult="";
+	var comResult = "";
+	//클릭이벤트
+		//나의 가위바위보
+		function select_user(mine){
+			document.getElementById("scissors").style.background="white";
+			document.getElementById("rock").style.background="white";
+			document.getElementById("paper").style.background="white";
+			document.getElementById(mine).style.background="green";
+			if(sw==true){
+				if(mine=="scissors"){
+					myInt = 0;
+					myResult = "<img class='res_my' src = '../img/가위.png'/>";
+					console.log("게임 시작");
+				}
+				if(mine=="rock"){
+					myInt = 1;
+					myResult = "<img class='res_my' src = '../img/바위.png'/>";
+					console.log("게임 시작");
+				}
+				if(mine=="paper"){
+					myInt = 2;
+					myResult = "<img class='res_my' src = '../img/보.png'/>";
+					console.log("게임 시작");
+				}
+				start();
+			}
+		}
+
+	//가위 바위 보 글자 출력
+	function start() {
+		sw = false;
+		//컴퓨터 사진 가위바위보 랜덤 출력 시작
+		randomPrint();
+		//0.5초 간격으로 가위 바위 보 텍스트 출력
+		var i = 0;
+		var pid = setInterval(function(){
+			if (i==0) {
+				result.innerHTML = "<p>가위</p>" + result.innerHTML;
+			} else if (i == 1) {
+				result.innerHTML = "<p>바위</p>" + result.innerHTML;
+			} else if (i == 2) {
+				result.innerHTML = "<p>보</p>" + result.innerHTML;
+				clearInterval(pid);
+				return checkGame();
+			}
+			i++;
+		},500)
+	}
+
+	//컴퓨터 시작전 랜덤 출력
+	function randomPrint(){
+		var j = 0;
+		var pid2 = setInterval(function(){
+			if (j==1000) {
+				console.log("게임 끝");
+				clearInterval(pid2);
+			} else {
+				comInt = Math.floor(Math.random()*3);
+				switch(comInt){
+					case 0: comResult = "<img class='res_com' src = '../img/가위.png'/>"; break;
+					case 1: comResult = "<img class='res_com' src = '../img/바위.png'/>"; break;
+					case 2: comResult = "<img class='res_com' src = '../img/보.png'/>"; break;
+				}
+				select_com.innerHTML = comResult;
+				j=j+100;
+			}
+	},100)}
+	
+	//가위 바위 보 승부
+	function checkGame() {
+		//컴퓨터의 가위바위보
+		comInt = Math.floor(Math.random()*3);
+		switch(comInt){
+			case 0: comResult = "<img class='res_com' src = '../img/가위.png'/>"; break;
+			case 1: comResult = "<img class='res_com' src = '../img/바위.png'/>"; break;
+			case 2: comResult = "<img class='res_com' src = '../img/보.png'/>"; break;
+		}
+		select_com.innerHTML = comResult;
+		result.innerHTML = "<p>사용자: " + myResult + selectArr[myInt]
+									+ " / 컴퓨터: " + comResult + selectArr[comInt]
+									+ " You " + resultArr[myInt][comInt] + "</p>"
+									+ result.innerHTML;
+		sw = true;
+	}
+	
+</script>
+</html>

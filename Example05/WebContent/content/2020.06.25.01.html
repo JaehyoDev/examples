@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script>
+//정규표현식 REGEXP 활용
+//1. 주민등록 번호 검증
+//--주민등록 번호 패턴: 숫자로 시작, 6개숫자 하이픈 성별1개숫자 뒤6개숫자
+	//숫자로 시작
+	var pattern1 = /^\d{6}-[1-6]\d{6}/;
+	var arr1 = "200203-6512445".match(pattern1);
+	console.log(arr1);
+//2. 이메일 형식 패턴
+//--숫자로 시작하지 않음. 중간에 골뱅이가 필수야
+//.이 한개일때 뒤에 영문이 3글자
+//.이 두개일떄 .뒤에 영문이 2글자
+	var pattern2 = /^[^0-9].*@[^0-9].*\.(a-zA-z]{2}\.[a-zA-z]{2}|[a-zA-z]{3})$/i;
+	var arr2 = "aaa@aaa.com".match(pattern2);
+	console.log(arr2);
+	
+//3. 가입시 아이디 비밀번호 규칙이 있습니다.
+//아이디 규칙1. 6글자 이상 13글자 이하
+//아이디 규칙2. 숫자로 시작할 수 없다.
+
+//비밀번호 규칙1. 8글자 이상 13글자 이하
+//비밀번호 규칙2. 특수문자 #또는 @ 또는 *을 한 개 이상 조합해야한다.
+//비밀번호 규칙3. 대문자를 한 개 이상 조합해야한다.
+//비밀번호 규칙4. 비밀번호는 숫자로 시작할 수 없다.
+//search 메소드 활용 return boolean
+	var mypass1 = "ar#a@*sf" //false
+	var mypass2 = "arAz33sdfa" //false
+	var mypass3 = "ar#azsdf33" //false
+	var mypass4 = "2ar#Azdf33" //false
+	var mypass5 = "ar#Az3s3" //true
+	/* 
+	console.log(mypass1.search("#")>=0);
+	console.log(mypass1.search("@")>=0);
+	console.log(mypass1.search("\\*")>=0); 별은 백슬래쉬 2개써야해
+	 */
+	checkPassword(mypass1,1);
+	checkPassword(mypass2,2);
+	checkPassword(mypass3,3);
+	checkPassword(mypass4,4);
+	checkPassword(mypass5,5);
+
+	function checkPassword(pwd,num){
+		var chk = "fail";
+		var p1 = /[\#\@\*]/;
+		var p2 = /[A-Z]/;
+		var p3 = /^[^\d]/;
+		var c1 = pwd.length>=8 && pwd.length<=13;
+		var c2 = pwd.search(p1)>=0;
+		var c3 = pwd.search(p2)>=0;
+		var c4 = pwd.search(p3)>=0;
+		if (c1 && c2 && c3 && c4) {
+			chk = "pass";
+		} else {
+			var msg = "알수없는 오류";
+			switch (false) {
+				case c1: msg = "8글자이상 13글자 이하"; 
+				break;
+				case c2: msg = "특문 오류"; 
+				break;
+				case c3: msg = "대문자를 한 개 이상 조합"; 
+				break;
+				case c4: msg = "비밀번호는 숫자로 시작할 수 없다"; 
+				break;
+			}
+			alert(msg);
+		}
+		console.log(num + ":" + chk);
+	}
+	
+	//replace(regExp,newChar)
+	var testStr = "안녕하세요 성명:홍길동 그리고 성명:조수석";
+	var res1 = testStr.replace(/성명:.../g,function(val){return val+" 씨";});	
+	console.log(res1);
+	//split(regExp)
+	var testStr2 = "홍길동 ash 조수석 asa 네이버 asn 카카오 ask 기사님";
+	var testArr2 = testStr2.split(/as./g);
+	console.log(testArr2);
+</script>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	for(let i=0; i<=10; i++) {
+		if (i==5) {
+			continue;
+		}
+		document.write(i);
+	}
+	
+	document.write("<hr>");
+	
+	for (let i=1; i<=10; i++) {
+		for (let j=10; j>=0; j--) {
+			let tmp = j-i;
+			if(tmp<0){
+				break;
+			}
+			document.write("★");
+		}
+		document.write("<br>");
+	}	
+	document.write("<hr>");
+	
+
+	for (let i=1; i<=10; i++) {
+		for (let j=10; j>=1; j--) {
+			let tmp = j-i; 
+			if(tmp<=0){
+				document.write("★");
+			}
+		}
+		document.write("<br>");
+	}
+	
+	//예외 처리 (오류 처리) exception
+	var a;
+	try {
+		throw("강제예외발생");
+		docuimie.write("오류발생1");
+	} catch (error) {
+		console.log(error);
+		if (error=="강제예외발생") {
+			document.write("개발자가 강제로 예외를 발생시켰습니당");
+		}
+		console.log("오류1");
+	}
+	try {
+		documiet.wirte("노답");
+	} catch (error) {
+		console.log(error);
+		console.log("예외처리");
+	}
+	document.write("오류 후 실행코드");
+	
+	//0과 10을 입력하지 마라가 요
+	var userInput;
+	try {
+		userInput = prompt("0과 10을 입력하지 마라고");
+		if(userInput==0) {
+			throw("0을 입력하였네요");
+		} else if (userInput==10) {
+			throw("10을 입력헸네");
+		}
+	}	
+	catch(msg){
+			alert(msg);		
+	}
+	finally {
+		document.write(userInput + "을 입력하였습니다");	
+	}
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
